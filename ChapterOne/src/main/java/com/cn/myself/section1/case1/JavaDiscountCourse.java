@@ -1,0 +1,17 @@
+package com.cn.myself.section1.case1;
+
+public class JavaDiscountCourse extends JavaCourse {
+
+    public JavaDiscountCourse(Integer id, String name, Double price) {
+        super(id, name, price);
+    }
+
+
+    public Double getOriginPrice() {
+        return super.getPrice();
+    }
+
+    public Double getPrice() {
+        return super.getPrice() * 0.6;
+    }
+}
