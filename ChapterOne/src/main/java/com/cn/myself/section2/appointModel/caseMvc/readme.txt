@@ -1,0 +1,5 @@
+Spring MVC的DispatcherServlet是如何实现委派模式的
+
+
+在Spring源码中，以Delegate结尾的地方都实现了委派模式，
+例如BeanDefinitionParserDelegate根据不同类型委派不同的逻辑解析BeanDefinition。
