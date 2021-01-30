@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class MyFirstInterceptor implements HandlerInterceptor {
 
-	//Ŀ�귽������֮ǰִ��
+	//目标方法运行之前执行
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -17,16 +17,16 @@ public class MyFirstInterceptor implements HandlerInterceptor {
 		return true;
 	}
 
-	//Ŀ�귽��ִ����ȷ�Ժ�ִ��
+	//目标方法执行正确以后执行
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
+						   ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("postHandle...");
 
 	}
 
-	//ҳ����Ӧ�Ժ�ִ��
+	//页面响应以后执行
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {

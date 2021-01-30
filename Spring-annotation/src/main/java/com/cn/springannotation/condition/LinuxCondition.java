@@ -7,33 +7,33 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-//�ж��Ƿ�linuxϵͳ
+//判断是否linux系统
 public class LinuxCondition implements Condition {
 
 	/**
-	 * ConditionContext���ж�������ʹ�õ������ģ�������
-	 * AnnotatedTypeMetadata��ע����Ϣ
+	 * ConditionContext：判断条件能使用的上下文（环境）
+	 * AnnotatedTypeMetadata：注释信息
 	 */
 	@Override
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-		// TODO�Ƿ�linuxϵͳ
-		//1���ܻ�ȡ��iocʹ�õ�beanfactory
+		// TODO是否linux系统
+		//1、能获取到ioc使用的beanfactory
 		ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
-		//2����ȡ�������
+		//2、获取类加载器
 		ClassLoader classLoader = context.getClassLoader();
-		//3����ȡ��ǰ������Ϣ
+		//3、获取当前环境信息
 		Environment environment = context.getEnvironment();
-		//4����ȡ��bean�����ע����
+		//4、获取到bean定义的注册类
 		BeanDefinitionRegistry registry = context.getRegistry();
-		
+
 		String property = environment.getProperty("os.name");
-		
-		//�����ж������е�beanע�������Ҳ���Ը�������ע��bean
+
+		//可以判断容器中的bean注册情况，也可以给容器中注册bean
 		boolean definition = registry.containsBeanDefinition("person");
 		if(property.contains("linux")){
 			return true;
 		}
-		
+
 		return false;
 	}
 

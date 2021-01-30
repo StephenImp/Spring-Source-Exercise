@@ -14,45 +14,45 @@ import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.HandlesTypes;
 
 
-//����������ʱ��Ὣ@HandlesTypesָ�������������������ࣨʵ���࣬�ӽӿڵȣ����ݹ�����
-//�������Ȥ�����ͣ�
+//容器启动的时候会将@HandlesTypes指定的这个类型下面的子类（实现类，子接口等）传递过来；
+//传入感兴趣的类型；
 @HandlesTypes(value={HelloService.class})
 public class MyServletContainerInitializer implements ServletContainerInitializer {
 
 	/**
-	 * Ӧ��������ʱ�򣬻�����onStartup������
-	 * 
-	 * Set<Class<?>> arg0������Ȥ�����͵����������ͣ�
-	 * ServletContext arg1:����ǰWebӦ�õ�ServletContext��һ��WebӦ��һ��ServletContext��
-	 * 
-	 * 1����ʹ��ServletContextע��Web�����Servlet��Filter��Listener��
-	 * 2����ʹ�ñ���ķ�ʽ������Ŀ������ʱ���ServletContext������������
-	 * 		��������Ŀ������ʱ������ӣ�
-	 * 		1����ServletContainerInitializer�õ���ServletContext��
-	 * 		2����ServletContextListener�õ���ServletContext��
+	 * 应用启动的时候，会运行onStartup方法；
+	 *
+	 * Set<Class<?>> arg0：感兴趣的类型的所有子类型；
+	 * ServletContext arg1:代表当前Web应用的ServletContext；一个Web应用一个ServletContext；
+	 *
+	 * 1）、使用ServletContext注册Web组件（Servlet、Filter、Listener）
+	 * 2）、使用编码的方式，在项目启动的时候给ServletContext里面添加组件；
+	 * 		必须在项目启动的时候来添加；
+	 * 		1）、ServletContainerInitializer得到的ServletContext；
+	 * 		2）、ServletContextListener得到的ServletContext；
 	 */
 	@Override
 	public void onStartup(Set<Class<?>> arg0, ServletContext sc) throws ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("����Ȥ�����ͣ�");
+		System.out.println("感兴趣的类型：");
 		for (Class<?> claz : arg0) {
 			System.out.println(claz);
 		}
-		
-		//ע�����  ServletRegistration  
+
+		//注册组件  ServletRegistration
 		ServletRegistration.Dynamic servlet = sc.addServlet("userServlet", new UserServlet());
-		//����servlet��ӳ����Ϣ
+		//配置servlet的映射信息
 		servlet.addMapping("/user");
-		
-		
-		//ע��Listener
+
+
+		//注册Listener
 		sc.addListener(UserListener.class);
-		
-		//ע��Filter  FilterRegistration
+
+		//注册Filter  FilterRegistration
 		FilterRegistration.Dynamic filter = sc.addFilter("userFilter", UserFilter.class);
-		//����Filter��ӳ����Ϣ
+		//配置Filter的映射信息
 		filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
-		
+
 	}
 
 }

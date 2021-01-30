@@ -5,21 +5,21 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
- * ������Ŀ��������ֹͣ
+ * 监听项目的启动和停止
  * @author lfy
  *
  */
 public class UserListener implements ServletContextListener {
 
-	
-	//����ServletContext����
+
+	//监听ServletContext销毁
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println("UserListener...contextDestroyed...");
 	}
 
-	//����ServletContext������ʼ��
+	//监听ServletContext启动初始化
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub

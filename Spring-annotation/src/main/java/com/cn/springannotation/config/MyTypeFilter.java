@@ -12,20 +12,20 @@ import org.springframework.core.type.filter.TypeFilter;
 public class MyTypeFilter implements TypeFilter {
 
 	/**
-	 * metadataReader����ȡ���ĵ�ǰ����ɨ��������Ϣ
-	 * metadataReaderFactory:���Ի�ȡ�������κ�����Ϣ��
+	 * metadataReader：读取到的当前正在扫描的类的信息
+	 * metadataReaderFactory:可以获取到其他任何类信息的
 	 */
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)
 			throws IOException {
 		// TODO Auto-generated method stub
-		//��ȡ��ǰ��ע�����Ϣ
+		//获取当前类注解的信息
 		AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
-		//��ȡ��ǰ����ɨ����������Ϣ
+		//获取当前正在扫描的类的类信息
 		ClassMetadata classMetadata = metadataReader.getClassMetadata();
-		//��ȡ��ǰ����Դ�����·����
+		//获取当前类资源（类的路径）
 		Resource resource = metadataReader.getResource();
-		
+
 		String className = classMetadata.getClassName();
 		System.out.println("--->"+className);
 		if(className.contains("er")){

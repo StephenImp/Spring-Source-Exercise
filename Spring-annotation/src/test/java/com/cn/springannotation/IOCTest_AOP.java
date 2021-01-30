@@ -14,18 +14,18 @@ import com.cn.springannotation.dao.BookDao;
 import com.cn.springannotation.service.BookService;
 
 public class IOCTest_AOP {
-	
+
 	@Test
 	public void test01(){
 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);
-		
-		//1����Ҫ�Լ���������
+
+		//1、不要自己创建对象
 //		MathCalculator mathCalculator = new MathCalculator();
 //		mathCalculator.div(1, 1);
 		MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
-		
+
 		mathCalculator.div(1, 0);
-		
+
 		applicationContext.close();
 	}
 

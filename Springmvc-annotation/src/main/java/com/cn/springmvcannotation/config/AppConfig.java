@@ -29,33 +29,33 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.cn.springmvcannotation.controller.MyFirstInterceptor;
 
-//SpringMVCֻɨ��Controller��������
-//useDefaultFilters=false ����Ĭ�ϵĹ��˹���
-@ComponentScan(value="com.cn.springmvcannotation",includeFilters={
+//SpringMVC只扫描Controller；子容器
+//useDefaultFilters=false 禁用默认的过滤规则；
+@ComponentScan(value="com.atguigu",includeFilters={
 		@Filter(type=FilterType.ANNOTATION,classes={Controller.class})
 },useDefaultFilters=false)
 @EnableWebMvc
 public class AppConfig  extends WebMvcConfigurerAdapter  {
 
-	//����
-	
-	//��ͼ������
+	//定制
+
+	//视图解析器
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		// TODO Auto-generated method stub
-		//Ĭ�����е�ҳ�涼�� /WEB-INF/ xxx .jsp
+		//默认所有的页面都从 /WEB-INF/ xxx .jsp
 		//registry.jsp();
 		registry.jsp("/WEB-INF/views/", ".jsp");
 	}
-	
-	//��̬��Դ����
+
+	//静态资源访问
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		// TODO Auto-generated method stub
 		configurer.enable();
 	}
-	
-	//������
+
+	//拦截器
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub

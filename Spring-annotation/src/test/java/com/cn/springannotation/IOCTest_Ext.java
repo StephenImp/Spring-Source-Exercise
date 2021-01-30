@@ -16,16 +16,16 @@ import com.cn.springannotation.ext.ExtConfig;
 import com.cn.springannotation.service.BookService;
 
 public class IOCTest_Ext {
-	
+
 	@Test
 	public void test01(){
 		AnnotationConfigApplicationContext applicationContext  = new AnnotationConfigApplicationContext(ExtConfig.class);
-		
-		
-		//�����¼���
-		applicationContext.publishEvent(new ApplicationEvent(new String("�ҷ�����ʱ��")) {
+
+
+		//发布事件；
+		applicationContext.publishEvent(new ApplicationEvent(new String("我发布的时间")) {
 		});
-		
+
 		applicationContext.close();
 	}
 
