@@ -12,7 +12,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * 切面类
- * @author lfy
+ * @author wpw
  *
  * @Aspect： 告诉Spring当前类是一个切面类
  *
@@ -33,16 +33,17 @@ public class LogAspects {
 		System.out.println(""+joinPoint.getSignature().getName()+"运行。。。@Before:参数列表是：{"+Arrays.asList(args)+"}");
 	}
 
-	@After("com.cn.springannotation.aop.LogAspects.pointCut()")
-	public void logEnd(JoinPoint joinPoint){
-		System.out.println(""+joinPoint.getSignature().getName()+"结束。。。@After");
-	}
-
 	//JoinPoint一定要出现在参数表的第一位
 	@AfterReturning(value="pointCut()",returning="result")
 	public void logReturn(JoinPoint joinPoint,Object result){
 		System.out.println(""+joinPoint.getSignature().getName()+"正常返回。。。@AfterReturning:运行结果：{"+result+"}");
 	}
+
+	@After("com.cn.springannotation.aop.LogAspects.pointCut()")
+	public void logEnd(JoinPoint joinPoint){
+		System.out.println(""+joinPoint.getSignature().getName()+"结束。。。@After");
+	}
+
 
 	@AfterThrowing(value="pointCut()",throwing="exception")
 	public void logException(JoinPoint joinPoint,Exception exception){

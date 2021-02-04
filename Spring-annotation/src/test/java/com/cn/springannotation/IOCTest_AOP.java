@@ -13,6 +13,9 @@ import com.cn.springannotation.config.MainConifgOfAutowired;
 import com.cn.springannotation.dao.BookDao;
 import com.cn.springannotation.service.BookService;
 
+/**
+ * AOP 源碼入口
+ */
 public class IOCTest_AOP {
 
 	@Test
@@ -24,7 +27,7 @@ public class IOCTest_AOP {
 //		mathCalculator.div(1, 1);
 		MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
 
-		mathCalculator.div(1, 0);
+		mathCalculator.div(1, 1);
 
 		applicationContext.close();
 	}

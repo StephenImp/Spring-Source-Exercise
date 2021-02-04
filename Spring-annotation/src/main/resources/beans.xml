@@ -11,9 +11,14 @@
 
 	<context:property-placeholder location="classpath:person.properties"/>
 	<!-- 包扫描、只要标注了@Controller、@Service、@Repository，@Component -->
-	 <!-- <context:component-scan base-package="com.atguigu" use-default-filters="false"></context:component-scan> -->
+	 <!-- <context:component-scan base-package="com.cn.springannotation" use-default-filters="false"></context:component-scan> -->
+
+<!--	1、基本数值-->
+<!--	2、可以写SpEL； #{}-->
+<!--	3、可以写${}；取出配置文件【properties】中的值（在运行环境变量里面的值）-->
+
 	<bean id="person" class="com.cn.springannotation.bean.Person"  scope="prototype" >
-		<property name="age" value="${}"></property>
+		<property name="age" value="#{age}"></property>
 		<property name="name" value="zhangsan"></property>
 	</bean>
 	

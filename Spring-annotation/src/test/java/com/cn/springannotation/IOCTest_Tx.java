@@ -6,6 +6,9 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
+/**
+ * 事务
+ */
 public class IOCTest_Tx {
 	
 	@Test

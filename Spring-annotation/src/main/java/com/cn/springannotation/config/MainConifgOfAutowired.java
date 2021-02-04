@@ -52,7 +52,7 @@ import com.cn.springannotation.dao.BookDao;
  * 			ApplicationContextAware==》ApplicationContextAwareProcessor；
  *
  *
- * @author lfy
+ * @author wpw
  *
  */
 @Configuration

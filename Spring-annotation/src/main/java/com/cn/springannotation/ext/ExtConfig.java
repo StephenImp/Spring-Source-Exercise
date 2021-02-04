@@ -45,8 +45,10 @@ import com.cn.springannotation.bean.Blue;
  *
  * 		4）、再来从容器中找到BeanFactoryPostProcessor组件；然后依次触发postProcessBeanFactory()方法
  *
+ *
+ *
  * 3、ApplicationListener：监听容器中发布的事件。事件驱动模型开发；
- * 	  public interface ApplicationListener<E extends ApplicationEvent>
+ * 	  	 public interface ApplicationListener<E extends ApplicationEvent>
  * 		监听 ApplicationEvent 及其下面的子事件；
  *
  * 	 步骤：
@@ -60,6 +62,7 @@ import com.cn.springannotation.bean.Blue;
  * 				ContextClosedEvent：关闭容器会发布这个事件；
  * 		4）、发布一个事件：
  * 				applicationContext.publishEvent()；
+ * 				eg:applicationContext.publishEvent(new ApplicationEvent(new String("我发布的时间")) {});
  *
  *  原理：
  *  	ContextRefreshedEvent、IOCTest_Ext$1[source=我发布的时间]、ContextClosedEvent；

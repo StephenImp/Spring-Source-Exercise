@@ -11,12 +11,12 @@ public class Person {
 
 	@Value("张三")
 	private String name;
+
 	@Value("#{20-2}")
-	private Integer age;
+	private Integer age = 18;
 
 	@Value("${person.nickName}")
 	private String nickName;
-
 
 
 	public String getNickName() {
@@ -51,12 +51,5 @@ public class Person {
 	public String toString() {
 		return "Person [name=" + name + ", age=" + age + ", nickName=" + nickName + "]";
 	}
-
-
-
-
-
-
-
 
 }

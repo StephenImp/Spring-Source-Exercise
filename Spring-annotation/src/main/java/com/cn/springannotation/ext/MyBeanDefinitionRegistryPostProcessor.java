@@ -1,5 +1,6 @@
 package com.cn.springannotation.ext;
 
+import com.cn.springannotation.bean.Red;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
@@ -25,6 +26,8 @@ public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegi
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 		// TODO Auto-generated method stub
 		System.out.println("postProcessBeanDefinitionRegistry...bean的数量："+registry.getBeanDefinitionCount());
+
+
 		//RootBeanDefinition beanDefinition = new RootBeanDefinition(Blue.class);
 		AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(Blue.class).getBeanDefinition();
 		registry.registerBeanDefinition("hello", beanDefinition);

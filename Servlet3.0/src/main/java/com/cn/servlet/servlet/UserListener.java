@@ -6,7 +6,7 @@ import javax.servlet.ServletContextListener;
 
 /**
  * 监听项目的启动和停止
- * @author lfy
+ * @author wpw
  *
  */
 public class UserListener implements ServletContextListener {
