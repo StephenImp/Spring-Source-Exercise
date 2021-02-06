@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
 
-//Spring��������ɨ��controller;������
+//SpringɨController;
 @ComponentScan(value="com.cn.springmvcannotation",excludeFilters={
 		@Filter(type=FilterType.ANNOTATION,classes={Controller.class})
 })

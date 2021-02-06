@@ -19,7 +19,7 @@
 实现抽象方法指定DispatcherServlet的配置信息；
 
 ===========================
-定制SpringMVC；
+定制SpringMVC；    AppConfig
 1）、@EnableWebMvc:开启SpringMVC定制配置功能；
 	<mvc:annotation-driven/>；
 

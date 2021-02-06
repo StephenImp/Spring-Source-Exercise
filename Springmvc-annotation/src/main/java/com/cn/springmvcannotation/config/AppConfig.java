@@ -30,7 +30,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.cn.springmvcannotation.controller.MyFirstInterceptor;
 
 //SpringMVC只扫描Controller；子容器
-//useDefaultFilters=false 禁用默认的过滤规则；
+//useDefaultFilters=false 禁用默认的过滤规则；只加载自定义规则，不加载默认规则
 @ComponentScan(value="com.cn.springannotation",includeFilters={
 		@Filter(type=FilterType.ANNOTATION,classes={Controller.class})
 },useDefaultFilters=false)
